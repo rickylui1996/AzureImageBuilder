@@ -17,40 +17,40 @@
 		"version": {
 			"type": "string",
 			"defaultValue": "18362.418.1910070306",
-            "metadata": {
-                "description": "Version of the image, can be found with powershell: Get-AzVMImage -Location westeurope -PublisherName MicrosoftWindowsDesktop -Offer windows-10 -Skus 19h1-evd"
-            }
+			"metadata": {
+				"description": "Version of the image, can be found with powershell: Get-AzVMImage -Location westeurope -PublisherName MicrosoftWindowsDesktop -Offer windows-10 -Skus 19h1-evd"
+			}
 		},
 		"ScriptUri": {
 			"type": "string",
-            "defaultValue": "https://raw.githubusercontent.com/Everink/AzureImageBuilder/master/Scripts/AzureImageBuilder.ps1",
-            "metadata": {
-                "description": "Location of powershell script to customize your image"
-            }
+			"defaultValue": "https://raw.githubusercontent.com/Everink/AzureImageBuilder/master/Scripts/AzureImageBuilder.ps1",
+			"metadata": {
+				"description": "Location of powershell script to customize your image"
+			}
 		},
-        "SIGImageDefinitionId":{
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Id of Shared Image Gallery to distribute image to, eg: /subscriptions/<subscriptionID>/resourceGroups/<SIG resourcegroup>/providers/Microsoft.Compute/galleries/<SIG name>/images/<image definition>"
-            }
-        },
-        "ManagedImageName":{
-            "type": "string",
-            "defaultValue": "AIB-Image",
-            "metadata": {
-                "description": "Name of the managed image, it will be created in the AIB resourcegroup"
-            }
-        },
+		"SIGImageDefinitionId": {
+			"type": "string",
+			"defaultValue": "",
+			"metadata": {
+				"description": "Id of Shared Image Gallery to distribute image to, eg: /subscriptions/<subscriptionID>/resourceGroups/<SIG resourcegroup>/providers/Microsoft.Compute/galleries/<SIG name>/images/<image definition>"
+			}
+		},
+		"ManagedImageName": {
+			"type": "string",
+			"defaultValue": "AIB-Image",
+			"metadata": {
+				"description": "Name of the managed image, it will be created in the AIB resourcegroup"
+			}
+		},
 		"randomGUID": {
 			"type": "string",
-            "defaultValue": "",
+			"defaultValue": "",
 			"defaultValue": "[newGuid()]"
 		}
 	},
 	"variables": {
 		"imageTemplateName": "[concat('AIB',uniqueString('deployment().name',parameters('randomGUID')))]",
-        "ManagedImageId": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Compute/images/',parameters('ManagedImageName'))]"
+		"ManagedImageId": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Compute/images/',parameters('ManagedImageName'))]"
 	},
 	"resources": [
 		{
@@ -58,7 +58,8 @@
 			"type": "Microsoft.VirtualMachineImages/imageTemplates",
 			"apiVersion": "2019-05-01-preview",
 			"location": "[resourcegroup().location]",
-			"dependsOn": [],
+			"dependsOn": [
+			],
 			"properties": {
 				"source": {
 					"type": "PlatformImage",
@@ -80,13 +81,13 @@
 				],
 				"distribute": [
 					{
-						"type":"ManagedImage",
+						"type": "ManagedImage",
 						"imageId": "[variables('ManagedImageId')]",
 						"location": "[resourceGroup().location]",
 						"runOutputName": "AIBimage",
 						"artifactTags": {
 						}
-                	}
+					}
 				]
 			}
 		}
