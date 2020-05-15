@@ -1,0 +1,94 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"_artifactsLocation": {
+			"value": "https://raw.githubusercontent.com/Everink/RDS-Templates/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/"
+		},
+		"rdshImageSource": {
+			"value": "SharedImageGallery"
+		},
+		"SharedImageGalleryResourceGroup": {
+			"value": "aibwinsig"
+		},
+		"SharedImageGalleryName": {
+			"value": "WVD_SharedImageGallery"
+		},
+		"SharedImageGalleryDefinitionName": {
+			"value": "WVD-HostPool1-GoldenImage"
+		},
+		"SharedImageGalleryVersionName": {
+			"value": "latest"
+		},
+		"hostPoolName": {
+			"value": "WVD-Hostpool4"
+		},
+		"rdshNamePrefix": {
+			"value": "demoVM"
+		},
+		"rdshNumberOfInstances": {
+			"value": 2
+		},
+		"rdshVmSize": {
+			"value": "Standard_D2s_v3"
+		},
+		"rdshVMDiskType": {
+			"value": "Premium_LRS"
+		},
+		"domainToJoin": {
+			"value": "rickylui1996hotmail.onmicrosoft.com"
+		},
+		"existingDomainUPN": {
+			"value": "rickylui1996@hotmail.com"
+		},
+		"existingDomainPassword": {
+			"reference": {
+				"keyVault": {
+					"id": "/subscriptions/d206ca81-b940-4491-8c12-1311bad5f0e3/resourceGroups/aibwinsig/providers/Microsoft.KeyVault/vaults/WVD-KeyVault20"
+				},
+				"secretName": "rickylui1996"
+			}
+		},
+		"ouPath": {
+			"value": "OU=Windows Virtual Desktop,OU=Computers,OU=Demo,DC=roeleverink,DC=nl"
+		},
+		"existingVnetName": {
+			"value": "AzureVnet3"
+		},
+		"existingSubnetName": {
+			"value": "frontend"
+		},
+		"virtualNetworkResourceGroupName": {
+			"value": "azurevnet"
+		},
+		"rdBrokerURL": {
+			"value": "https://rdbroker.wvd.microsoft.com"
+		},
+		"existingTenantGroupName": {
+			"value": "Default Tenant Group"
+		},
+		"existingTenantName": {
+			"value": "rickylui1996hotmail.onmicrosoft.com"
+		},		
+		"defaultDesktopUsers": {
+			"value": "rickylui1996@hotmail.com"
+		},
+		"tenantAdminUpnOrApplicationId": {
+			"value": "rickylui1996@hotmail.com"
+		},
+		"tenantAdminPassword": {
+			"reference": {
+				"keyVault": {
+					"id": "/subscriptions/d206ca81-b940-4491-8c12-1311bad5f0e3/resourceGroups/aibwinsig/providers/Microsoft.KeyVault/vaults/WVD-KeyVault20"
+				},
+				"secretName": "WVD-AD"
+			}
+		},
+		"isServicePrincipal": {
+			"value": true
+		},
+		"aadTenantId": {
+			"value": "4ea0b10c-92d9-413a-924c-7272aec6ca02"
+		}
+	}
+}
