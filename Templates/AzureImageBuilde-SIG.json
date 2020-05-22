@@ -16,7 +16,7 @@
 		},
 		"version": {
 			"type": "string",
-			"defaultValue": "18362.418.1910070306",
+			"defaultValue": "18362.836.2005071659",
 			"metadata": {
 				"description": "Version of the image, can be found with powershell: Get-AzVMImage -Location westeurope -PublisherName MicrosoftWindowsDesktop -Offer windows-10 -Skus 19h1-evd"
 			}
@@ -81,12 +81,12 @@
 				"distribute": [
 					{
 						"type": "SharedImage",
-						"galleryImageId": "[parameters('SIGImageDefinitionId')]",
+						"galleryImageId": "/subscriptions/b461c8e4-e814-4569-961d-51c13d2ee9ca/resourceGroups/aibwinsig/providers/Microsoft.Compute/galleries/WVD_SharedImageGallery/images/WVD-HostPool1-Goldenimage",
 						"runOutputName": "SIGimage",
 						"artifactTags": {
 						},
 						"replicationRegions": [
-							"westeurope"
+							"eastasia"
 						]
 					},
 					{
